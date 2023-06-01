@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/models/movie_data.dart';
 import 'package:movie_app/models/movie_detail_data.dart';
+import 'package:movie_app/models/movie_video_data.dart';
 import 'package:movie_app/utils/api_routes.dart';
 import 'package:movie_app/utils/service_helper.dart';
 
@@ -26,6 +27,19 @@ class MoviesServices {
       return MovieDetailData.getObjectFromJson(res);
     }
     return null;
+  }
+
+//* GET MOVIE VIDEO SERVICE
+  static Future<List<MovieVideoData>> getMovieVideos(BuildContext context,int movieId) async {
+    List<MovieVideoData> movieVideos = [];
+    String url = ApiRoutes.baseUrl + ApiRoutes.getMovieVideosRoute(movieId.toString());
+    Map<String,dynamic>? res = await ServiceHelper.sendHttpGetRequest(url, context);
+    if(res != null) {
+      for(Map<String,dynamic> videos in res['results']) {
+        movieVideos.add(MovieVideoData.getObjectFromJson(videos));
+      }
+    }
+    return movieVideos;
   }
 
 }

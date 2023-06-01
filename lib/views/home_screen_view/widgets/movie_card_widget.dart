@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/models/movie_data.dart';
+import 'package:movie_app/redux/movie_data_redux/actions.dart';
+import 'package:movie_app/redux/redux_store.dart';
 import 'package:movie_app/utils/api_routes.dart';
 import 'package:movie_app/utils/basic_util.dart';
 import 'package:movie_app/views/movie_detail_view/movie_detail_screen.dart';
@@ -17,6 +19,7 @@ class _MovieCardWidgetState extends State<MovieCardWidget> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        ReduxStore.movieDetailStore.dispatch(UpdateMovieDetail(null));
         BasicUtil.openBottomSheet(context, MovieDetailScreen(movieId: widget.movieData.id));
       },
       child: Container(

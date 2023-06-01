@@ -5,7 +5,7 @@ import 'package:movie_app/models/spoken_language_data.dart';
 class MovieDetailData {
   late bool adult;
   late String backdropPath;
-  late String? belongsToCollection;
+  late Map<String,dynamic>? belongsToCollection;
   late int budget;
   late List<Map<String,dynamic>> genres;
   late String homepage;
@@ -73,7 +73,7 @@ class MovieDetailData {
      return MovieDetailData(
       adult: jsonData['adult'],
       backdropPath: jsonData['backdrop_path'], 
-      belongsToCollection: jsonData['belongs_to_collection'],
+      belongsToCollection: Map<String,dynamic>.of(jsonData['belongs_to_collection'] ?? {}),
       budget: jsonData['budget'], 
       genres: List<Map<String,dynamic>>.from(jsonData['genres']), 
       homepage: jsonData['homepage'], 
