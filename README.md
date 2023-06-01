@@ -1,16 +1,15 @@
-# movie_app
+# Movie App
 
-A new Flutter project.
+Uses Api provided by The movie DB
 
-## Getting Started
+Api docs: https://developer.themoviedb.org/reference/intro/getting-started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Create ENV File
+ Create .env file in your root of project and add below fields in that file
+ 
+ TMD_API_KEY = Your api key
+  
+Place your api key insted <Your api key>
+  
+You can generate api key from https://developer.themoviedb.org/reference/intro/getting-started
+ 
