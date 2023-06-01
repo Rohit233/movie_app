@@ -5,6 +5,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:movie_app/models/movie_detail_data.dart';
 import 'package:movie_app/utils/api_routes.dart';
 import 'package:movie_app/view_models/movie_detail_view_model.dart';
+import 'package:movie_app/views/movie_detail_view/widgets/movie_videos_widget.dart';
 
 class MovieDetailScreen extends StatefulWidget {
   final int movieId;
@@ -41,11 +42,13 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                    child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Align(
+                      Align(
                         alignment: Alignment.centerRight,
                         child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Icon(Icons.close),
+                          padding: const EdgeInsets.all(8.0),
+                          child: IconButton(onPressed: () {
+                              Navigator.pop(context);
+                          }, icon: const Icon(Icons.close)),
                         )),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -100,9 +103,10 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                         child: Text(movieDetailData.overview,
                         textAlign: TextAlign.justify,
                         style: Theme.of(context).textTheme.bodyMedium,),
-                      )
+                      ),
+                      MovieVideos(movieId: movieDetailData.id)
                     ],
-                                 ),
+                  ),
                  );
               }
             );
